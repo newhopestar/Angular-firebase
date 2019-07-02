@@ -1,0 +1,68 @@
+<nav class="cat__menu-left">
+    <div class="cat__menu-left__lock cat__menu-left__action--menu-toggle">
+        <div class="cat__menu-left__pin-button">
+            <div><!-- --></div>
+        </div>
+    </div>
+    <div class="cat__menu-left__logo">
+        <a [routerLink]="['/']">
+            <img [src]="logo?.logo" />
+        </a>
+    </div>
+    <div class="cat__menu-left__inner">
+        <ul class="cat__menu-left__list cat__menu-left__list--root">
+                        <li class="cat__menu-left__item" [routerLinkActive]="['cat__menu-left__item--active']">
+                <a [routerLink]="['alpha']">
+				            <span class="cat__menu-left__icon lnr lnr-home"></span>
+                    בית
+                </a>
+            </li>
+            <li class="cat__menu-left__item" [routerLinkActive]="['cat__menu-left__item--active']">
+                <a [routerLink]="['meetType']">
+                    <span class="cat__menu-left__icon lnr lnr-store "></span>
+                    ניהול תורים
+                </a>
+            <li class="cat__menu-left__item" [routerLinkActive]="['cat__menu-left__item--active']">
+                <a [routerLink]="['Customers']">
+				            <span class="cat__menu-left__icon lnr lnr-users"></span>
+                    לקוחות
+                </a>
+            </li>
+            <li class="cat__menu-left__item" [routerLinkActive]="['cat__menu-left__item--active']">
+                <a [routerLink]="['Calendar']">
+                    <span class="cat__menu-left__icon lnr lnr-calendar-full"></span>
+                    יומן
+                </a>
+            </li>
+            <li class="cat__menu-left__item" [routerLinkActive]="['cat__menu-left__item--active']">
+                <a [routerLink]="['apps/messaging']">
+                    <span class="cat__menu-left__icon lnr lnr-bubble"></span>
+                    צא׳ט
+                </a>
+            </li>
+            <li class="cat__menu-left__item" [routerLinkActive]="['cat__menu-left__item--active']">
+                <a [routerLink]="['ecommerce/product-edit']">
+                    <span class="cat__menu-left__icon icmn-cog"></span>
+                    ניהול מספרה
+                </a>
+            </li>
+           <li class="cat__menu-left__divider"><!-- --></li>
+            <li class="cat__menu-left__item cat__menu-left__item" [routerLinkActive]="['cat__menu-left__item--active']">
+                <a [routerLink]="['login']">
+                    <span class="cat__menu-left__icon lnr lnr-tag"></span>
+                    מבצעים
+                        <i class="fa fa-certificate"></i>
+                </a>
+            </li>
+            <li class="cat__menu-left__item cat__menu-left__item" [routerLinkActive]="['cat__menu-left__item--active']">
+                <a (click)="logout()">
+                    <span class="cat__menu-left__icon lnr lnr-tag"></span>
+                    LOGOUT
+                        <i class="fa fa-sign-out"></i>
+                </a>
+            </li>
+
+        </ul>
+        
+    </div>
+</nav>

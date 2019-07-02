@@ -1,0 +1,246 @@
+<!-- START: ecommerce/products-catalog -->
+<section class="card">
+  <div class="card-header">
+    <span class="cat__core__title">
+            <strong>Products Catalog</strong>
+        </span>
+  </div>
+  <div class="card-block">
+    <div class="cat__ecommerce__catalog">
+      <div class="row">
+
+        <div *ngFor="let m of meets | async" class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
+          <div class="cat__ecommerce__catalog__item">
+            <div class="cat__ecommerce__catalog__item__img">
+              <div class="cat__ecommerce__catalog__item__status">
+                <span class="cat__ecommerce__catalog__item__status__title"></span>
+              </div>
+              <div class="cat__ecommerce__catalog__item__like cat__ecommerce__catalog__item__like--selected">
+                {{m.meetTime}} דק׳
+              </div>
+           <a [routerLink]="['/users', m.name]">
+                <img src="/assets/modules/ecommerce/img/001.jpg" />
+              </a>
+            </div>
+            <div class="cat__ecommerce__catalog__item__title">
+              {{m.price}} ₪
+              <div class="cat__ecommerce__catalog__item__price">
+                {{m.name}}
+                <div class="cat__ecommerce__catalog__item__price--old">
+                  {{m.info}}
+                </div>
+              </div>
+            </div>
+            <div class="row" style="
+                            padding-top: 50px;
+                            text-align: center;
+                            margin: 0 auto;
+                         display: block
+                        ">
+              <button class="btn btn-sm btn-outline-success" *ngIf="m.float" type="button">
+                            <i aria-hidden="true" class="fa fa-life-saver"></i>
+                            תור צף{{m.float}}
+                        </button>
+
+              <button class="btn btn-sm class.btn-outline-default" type="button">
+                            <i aria-hidden="true" class="fa"  ></i>
+                            נקבה {{m.gender}}
+                        </button>
+              <button class="btn btn-sm btn-outline-success" type="button" *ngIf="m.approve">
+                            <i aria-hidden="true" class="fa fa-check"></i>
+                            דרוש אישור {{m.approve}}
+                        </button>
+              <button class="btn btn-sm btn-outline-success" type="button" *ngIf="m.reminder">
+                            <i aria-hidden="true" class="icmn-alarm"></i>
+                            תזכורת {{m.reminder}}דק׳
+                        </button>
+              <div class="pull-right">
+                <button type="button" class="btn btn-sm" aria-expanded="false" (click)="deleteMeetTypeInner(m.$key)">
+                                        מחק
+                                    </button>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <!-- Under Element Form Validation -->
+
+      <!-- End Under Element Form Validation -->
+    </div>
+  </div>
+
+  <button type="button" class="btn btn-default mr-2 mb-2" data-toggle="modal" data-target="#example1">
+                הוסף חופשה חדשה
+            </button>
+  <div class="modal fade" id="example1" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="myModalLabel">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+        </div>
+        <div class="modal-body">
+          <div class="col-sm-4">
+            <!-- Under Element Form Validation -->
+            <form (ngSubmit)="onSubmit(newType.value)" #newType="ngForm">
+              <div class="form-group">
+                <label class="form-label">name</label>
+                <input name="name" type="text" class="form-control" ngModel required>
+              </div>
+              <div class="form-group">
+                <label class="form-label">price</label>
+                <input name="price" type="text" class="form-control" ngModel>
+              </div>
+              <div class="form-group">
+                <label class="form-label">reminder</label>
+                <input name="reminder" type="text" class="form-control" ngModel>
+              </div>
+              <div class="form-group">
+                <label class="form-label">info</label>
+                <input name="info" type="text" class="form-control" ngModel>
+              </div>
+              <div class="form-group">
+                <label class="form-label">meetTime</label>
+                <input name="meetTime" type="text" class="form-control" ngModel required>
+              </div>
+              <div class="form-group">
+                <label class="form-label">pic</label>
+                <input name="pic" type="text" class="form-control" ngModel required>
+              </div>
+              <div class="form-group">
+                <label class="btn btn-default">
+                            <input type="checkbox"
+                                   name="approve"
+                                   [value]="true"
+                                   
+                                    ngModel>
+                            approve
+                        </label>
+                <label class="btn btn-default">
+                            <input  type="checkbox" 
+                                    name="float" 
+                                    [value]="true"
+                                    checked="float" 
+                                    ngModel
+                                     >
+                            float
+                        </label>
+              </div>
+              <div class="form-group">
+                <label class="btn btn-default">
+                            <input type="radio" value="male" name="gender" [(ngModel)]="gender" required>
+                            male d
+                        </label>
+                <label class="btn btn-default">
+                           <input type="radio" value="female" name="gender" [(ngModel)]="gender" required>
+                            female
+                        </label>
+              </div>
+
+
+
+
+              <div class="form-actions">
+                <button type="submit" class="btn btn-primary width-150">Validate</button>
+              </div>
+            </form>
+            <!-- End Under Element Form Validation -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="modal fade" id="example2" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="myModalLabel">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+        </div>
+        <div class="modal-body">
+          <div class="col-sm-4">
+            <!-- Under Element Form Validation -->
+            <form (ngSubmit)="onUpdate(updateType.value)" #updateType="ngForm">
+              <div class="form-group">
+                <label class="form-label">name</label>
+                <input name="name" type="text" class="form-control" ngModel required>
+              </div>
+              <div class="form-group">
+                <label class="form-label">price</label>
+                <input name="price" type="text" class="form-control" ngModel>
+              </div>
+              <div class="form-group">
+                <label class="form-label">reminder</label>
+                <input name="reminder" type="text" class="form-control" ngModel>
+              </div>
+              <div class="form-group">
+                <label class="form-label">info</label>
+                <input name="info" type="text" class="form-control" ngModel>
+              </div>
+              <div class="form-group">
+                <label class="form-label">meetTime</label>
+                <input name="meetTime" type="text" class="form-control" ngModel required>
+              </div>
+              <div class="form-group">
+                <label class="form-label">pic</label>
+                <input name="pic" type="text" class="form-control" ngModel required>
+              </div>
+              <div class="form-group">
+                <label class="btn btn-default">
+                            <input type="checkbox"
+                                   name="approve"
+                                   [value]="true"
+                                   
+                                    ngModel>
+                            approve
+                        </label>
+                <label class="btn btn-default">
+                            <input  type="checkbox" 
+                                    name="float" 
+                                    [value]="true"
+                                    checked="float" 
+                                    ngModel
+                                     >
+                            float
+                        </label>
+              </div>
+              <div class="form-group">
+                <label class="btn btn-default">
+                            <input type="radio" value="male" name="gender" [(ngModel)]="gender" required>
+                            male d
+                        </label>
+                <label class="btn btn-default">
+                           <input type="radio" value="female" name="gender" [(ngModel)]="gender" required>
+                            female
+                        </label>
+              </div>
+
+
+
+
+              <div class="form-actions">
+                <button type="submit" class="btn btn-primary width-150">Validate</button>
+              </div>
+            </form>
+            <!-- End Under Element Form Validation -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+</section>
+<!-- END: ecommerce/products-catalog -->
